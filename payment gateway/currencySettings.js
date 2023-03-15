@@ -3,9 +3,9 @@ const domStrings = {
   select: document.querySelector("#send-select"),
   valueToSend: document.querySelector("#sentVal"),
   confiemBtn: document.querySelector("#confirm-send"),
-  bankName:document.querySelector("#bank-name"),
-  accntNumb:document.querySelector("#acc-num"),
-  narration:document.querySelector("#trans-narr")
+  bankName: document.querySelector("#bank-name"),
+  accntNumb: document.querySelector("#acc-num"),
+  narration: document.querySelector("#trans-narr"),
 };
 // Currency Adding new currency;
 //measure the currency by a base currency rate.
@@ -118,25 +118,46 @@ function currency() {
 function safe() {
   //initializing a variale to save the returned value from the currency function.
   let money = currency();
-  money.setCurrency("Naira", 10, 15, "₦");
-  money.setCurrency("Dollar", 25, 5, "$");
-  money.setCurrency("Pounds", 67, 12, "£");
-  money.setCurrency("Euro", 27, 15, "£");
-  money.setCurrency("Yuen", 27, 15, "£");
+  money.setCurrency("Naira", 10000, 15, "₦");
+  money.setCurrency("Dollar", 250, 5, "$");
+  money.setCurrency("Cedi", 673, 12, "C");
+  money.setCurrency("Kes", 276.5, 15, "K");
+  money.setCurrency("Yuen", 2700, 15, "£");
+  /*
+  Cedi ghana
+  kes kenya
+  mwk malawi
+  rwf rwanda
+  tzs tanzania
+  ugx uganda
+  xof togo
+  zmw zambia
+  zar sa
+  xaf CAR
+  xaf chad
+  xaf gabon
+  xaf congo
+  xaf cameroon
+  */
 
   document.querySelector("#send-to-bank").addEventListener("click", (e) => {
     //the values from the option box will be set as the name of the currency.
     domStrings.confiemBtn.addEventListener("click", (ef) => {
       ef.preventDefault();
 
-      console.log(domStrings.valueToSend.value,domStrings.bankName.value,domStrings.accntNumb.value,domStrings.narration.value);
+      console.log(
+        domStrings.valueToSend.value,
+        domStrings.bankName.value,
+        domStrings.accntNumb.value,
+        domStrings.narration.value
+      );
 
       //Pass the value from the input box into the send money function.
       money.send(e.target.value, parseFloat(domStrings.valueToSend.value));
-      domStrings.valueToSend.value="";
-      domStrings.bankName.value="";
-      domStrings.accntNumb.value="";
-      domStrings.narration.value ="";
+      domStrings.valueToSend.value = "";
+      domStrings.bankName.value = "";
+      domStrings.accntNumb.value = "";
+      domStrings.narration.value = "";
     });
   });
 
